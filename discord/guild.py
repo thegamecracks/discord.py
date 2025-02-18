@@ -4648,20 +4648,14 @@ class Guild(Hashable):
 
         .. versionadded:: 2.5
         """
-        if not self.dm_spam_detected_at:
-            return False
-
-        return self.dm_spam_detected_at > utils.utcnow()
+        return bool(self.dm_spam_detected_at)
 
     def is_raid_detected(self) -> bool:
         """:class:`bool`: Whether a raid was detected in the guild.
 
         .. versionadded:: 2.5
         """
-        if not self.raid_detected_at:
-            return False
-
-        return self.raid_detected_at > utils.utcnow()
+        return bool(self.raid_detected_at)
 
     async def fetch_soundboard_sound(self, sound_id: int, /) -> SoundboardSound:
         """|coro|
